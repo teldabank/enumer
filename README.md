@@ -1,9 +1,9 @@
-# Enumer [![GoDoc](https://godoc.org/github.com/dmarkham/enumer?status.svg)](https://godoc.org/github.com/dmarkham/enumer) [![Go Report Card](https://goreportcard.com/badge/github.com/dmarkham/enumer)](https://goreportcard.com/report/github.com/dmarkham/enumer) [![GitHub Release](https://img.shields.io/github/release/dmarkham/enumer.svg)](https://github.com/dmarkham/enumer/releases)
+# Enumer [![GoDoc](https://godoc.org/github.com/teldabank/enumer?status.svg)](https://godoc.org/github.com/teldabank/enumer) [![Go Report Card](https://goreportcard.com/badge/github.com/teldabank/enumer)](https://goreportcard.com/report/github.com/teldabank/enumer) [![GitHub Release](https://img.shields.io/github/release/teldabank/enumer.svg)](https://github.com/teldabank/enumer/releases)
 
 Enumer is a tool to generate Go code that adds useful methods to Go enums (constants with a specific type).
 It started as a fork of [Rob Pike’s Stringer tool](https://godoc.org/golang.org/x/tools/cmd/stringer)
 maintained by [Álvaro López Espinosa](https://github.com/alvaroloes/enumer). 
-This was again forked here as (https://github.com/dmarkham/enumer) picking up where Álvaro left off.
+This was again forked here as (https://github.com/teldabank/enumer) picking up where Álvaro left off.
 
 
 ```
@@ -13,7 +13,7 @@ Usage of enumer:
         Enumer [flags] -type T [directory]
         Enumer [flags] -type T files... # Must be a single package
 For more information, see:
-        http://godoc.org/github.com/dmarkham/enumer
+        http://godoc.org/github.com/teldabank/enumer
 Flags:
   -addprefix string
         transform each item name by adding a prefix. Default: ""
@@ -202,7 +202,7 @@ name := MyTypeValue.String() // name => "my_type_value"
 For a module-aware repo with `enumer` in the `go.mod` file, generation can be called by adding the following to a `.go` source file:
 
 ```golang
-//go:generate go run github.com/dmarkham/enumer -type=YOURTYPE
+//go:generate go run github.com/teldabank/enumer -type=YOURTYPE
 ```
 
 There are five boolean flags: `json`, `text`, `yaml`, `sql`, and `typederrors`. You can use any combination of them (i.e. `enumer -type=Pill -json -text -typederrors`),
@@ -227,7 +227,7 @@ When using the `typederrors` flag, you can handle enum validation errors specifi
 ```go
 import (
     "errors"
-    "github.com/dmarkham/enumer/enumerrs"
+    "github.com/teldabank/enumer/enumerrs"
 )
 
 // This will return a typed error that can be checked

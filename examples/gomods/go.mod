@@ -1,3 +1,3 @@
-module github.com/dmarkham/gomods
+module github.com/teldabank/gomods
 
 go 1.12

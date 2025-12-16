@@ -5,7 +5,7 @@
 // Enumer is a tool to generate Go code that adds useful methods to Go enums (constants with a specific type).
 // It started as a fork of Rob Pike’s Stringer tool
 //
-// Please visit http://github.com/dmarkham/enumer for a comprehensive documentation
+// Please visit http://github.com/teldabank/enumer for a comprehensive documentation
 package main
 
 import (
@@ -72,7 +72,7 @@ func Usage() {
 	_, _ = fmt.Fprintf(os.Stderr, "\tEnumer [flags] -type T [directory]\n")
 	_, _ = fmt.Fprintf(os.Stderr, "\tEnumer [flags] -type T files... # Must be a single package\n")
 	_, _ = fmt.Fprintf(os.Stderr, "For more information, see:\n")
-	_, _ = fmt.Fprintf(os.Stderr, "\thttp://godoc.org/github.com/dmarkham/enumer\n")
+	_, _ = fmt.Fprintf(os.Stderr, "\thttp://godoc.org/github.com/teldabank/enumer\n")
 	_, _ = fmt.Fprintf(os.Stderr, "Flags:\n")
 	flag.PrintDefaults()
 }
@@ -122,7 +122,7 @@ func main() {
 	g.Printf("import (\n")
 	if *typedErrors {
 		g.Printf("\t\"errors\"\n")
-		g.Printf("\t\"github.com/dmarkham/enumer/enumerrs\"\n")
+		g.Printf("\t\"github.com/teldabank/enumer/enumerrs\"\n")
 	}
 	g.Printf("\t\"fmt\"\n")
 	g.Printf("\t\"strings\"\n")
@@ -420,7 +420,8 @@ func (g *Generator) prefixValueNames(values []Value, prefix string) {
 // generate produces the String method for the named type.
 func (g *Generator) generate(typeName string,
 	includeJSON, includeYAML, includeSQL, includeText, includeGQLGen bool,
-	transformMethod string, trimPrefix string, addPrefix string, lineComment bool, includeValuesMethod bool, useTypedErrors bool) {
+	transformMethod string, trimPrefix string, addPrefix string, lineComment bool, includeValuesMethod bool, useTypedErrors bool,
+) {
 	values := make([]Value, 0, 100)
 	for _, file := range g.pkg.files {
 		file.lineComment = lineComment
@@ -696,7 +697,7 @@ func (g *Generator) declareIndexAndNameVar(run []Value, typeName string) {
 	g.Printf("var %s\n", index)
 	index, n = g.createLowerIndexAndNameDecl(run, typeName, "")
 	g.Printf("const %s\n", n)
-	//g.Printf("var %s\n", index)
+	// g.Printf("var %s\n", index)
 }
 
 // createIndexAndNameDecl returns the pair of declarations for the run. The caller will add "const" and "var".
